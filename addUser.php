@@ -15,4 +15,13 @@
     $stmt1->bindParam(":phoneNumber",$_POST["phonenumber"]);
     $stmt1->bindParam(":Password",password_hash($_POST["Password"],PASSWORD_DEFAULT));
     $stmt1->execute();
+
+    $last_id = $conn->lastInsertId();
+
+    $stmt1=$conn->prepare("INSERT INTO tblCollections
+    (collectionID,userID,location)
+    VALUES
+    (NULL,$last_id,'Chelsea Bridge')
+    ");
+    $stmt1->execute();
 ?>

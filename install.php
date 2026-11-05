@@ -30,7 +30,7 @@
 
     #add in some default test data
     $hashedpassword=password_hash("password",PASSWORD_DEFAULT);
-    $stmt1=$conn->prepare("INSERT INTO tblusers
+    $stmt1=$conn->prepare("INSERT INTO tblUsers
     (userID,firstName,surname,title,role,Email,phoneNumber,Password)
     VALUES
     (NULL,'Joe','Bloggs','Mr',1,'JoeBloggs@gmail.com','01234567890',:Password),
@@ -49,6 +49,14 @@
     $stmt1->execute();
     echo("collections table made");
 
+    #add in some default test data
+    $stmt1=$conn->prepare("INSERT INTO tblCollections
+    (collectionID,userID,location)
+    VALUES
+    (NULL,1,'Chelsea Bridge'),
+    (NULL,2,'Chelsea Bridge')
+    ");
+    $stmt1->execute();
     #create the collection.wine table
     $stmt1= $conn->prepare("DROP TABLE IF EXISTS tblCollectionWines;
     CREATE TABLE tblCollectionWines
@@ -78,7 +86,7 @@
     echo("wine table made");
 
     #add in some default test data
-    $stmt1=$conn->prepare("INSERT INTO tblwines
+    $stmt1=$conn->prepare("INSERT INTO tblWines
     (wineID,wineName,colour,storageMethod,numberBottles,region,country,vintage,ABV)
     VALUES
     (NULL,'Chateau Pedesclaux','Red','Bottle',1,'Bordeaux','France',2018,14),
