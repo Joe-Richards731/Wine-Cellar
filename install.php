@@ -76,7 +76,7 @@
     wineName VARCHAR(50) NOT NULL,
     colour VARCHAR(15) NOT NULL,
     storageMethod VARCHAR(50) NOT NULL,
-    numberBottles INT(2) NOT NULL,
+    volume INT(5) NOT NULL,
     region VARCHAR(50) NOT NULL,
     country VARCHAR(50) NOT NULL,
     vintage INT(4) NOT NULL,
@@ -87,10 +87,21 @@
 
     #add in some default test data
     $stmt1=$conn->prepare("INSERT INTO tblWines
-    (wineID,wineName,colour,storageMethod,numberBottles,region,country,vintage,ABV)
+    (wineID,wineName,colour,storageMethod,volume,region,country,vintage,ABV)
     VALUES
-    (NULL,'Chateau Pedesclaux','Red','Bottle',1,'Bordeaux','France',2018,14),
-    (NULL,'Cantina Tramin Glarea','White','Case',12,'Alto Adige','Italy',2023,13.5)
+    (NULL,'Chateau Pedesclaux','Red','Standard Bottle',750,'Bordeaux','France',2018,14),
+    (NULL,'Cantina Tramin Glarea','White','Standard Case',9000,'Alto Adige','Italy',2023,13.5)
+    ");
+    $stmt1->execute();
+    
+    #add wines into the collections
+    $stmt1=$conn->prepare("INSERT INTO tblCollectionWines
+    (collectionID,wineID,quantity)
+    VALUES
+    (1,1,3),
+    (1,2,1),
+    (2,1,5),
+    (2,2,2)
     ");
     $stmt1->execute();
 ?>

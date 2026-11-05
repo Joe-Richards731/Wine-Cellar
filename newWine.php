@@ -9,7 +9,7 @@
         Name: <input type="text" name="wineName" required=True><br>
         Colour: <input type="text" name="colour" required=True><br>
         Storage Method: <input type="text" name="storageMethod" required=True><br>
-        Number of Bottles: <input type="number" name="numberBottles" required=True min="1"><br>
+        Volume of Wine: <input type="number" name="volume" required=True min="1"><br>
         Region: <input type="text" name="region" required=True><br>
         Country: <input type="text" name="country" required=True><br>
         Vintage: <input type="number" name="vintage" required=True min="0" max="2026"><br>

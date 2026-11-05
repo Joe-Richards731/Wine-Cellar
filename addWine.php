@@ -3,14 +3,14 @@
     include_once("connection.php");
 
     $stmt1=$conn->prepare("INSERT INTO tblWines 
-    (wineID,wineName,colour,storageMethod,numberBottles,region,country,vintage,ABV)
+    (wineID,wineName,colour,storageMethod,volume,region,country,vintage,ABV)
     VALUES
-    (NULL,:wineName,:colour,:storageMethod,:numberBottles,:region,:country,:vintage,:ABV)
+    (NULL,:wineName,:colour,:storageMethod,:volume,:region,:country,:vintage,:ABV)
     ");  // inserts the data from the form into the table to add the new wine
     $stmt1->bindParam(":wineName",$_POST["wineName"]);
     $stmt1->bindParam(":colour",$_POST["colour"]);
     $stmt1->bindParam(":storageMethod",$_POST["storageMethod"]);
-    $stmt1->bindParam(":numberBottles",$_POST["numberBottles"]);
+    $stmt1->bindParam(":volume",$_POST["volume"]);
     $stmt1->bindParam(":region",$_POST["region"]);
     $stmt1->bindParam(":country",$_POST["country"]);
     $stmt1->bindParam(":vintage",$_POST["vintage"]);
