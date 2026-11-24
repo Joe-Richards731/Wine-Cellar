@@ -32,9 +32,22 @@
             echo('<input type="text" name="wine" hidden value='.$row["wID"].'>');
             echo('<input type="submit" value="-"><br></form>');
 
+            echo('<form action="deleteBottle.php" method = "POST"> '); //sends through to delete a bottle/case from the collection
+            echo('<input type="text" name="wine" hidden value='.$row["wID"].'>');
+            echo('<input type="submit" value="delete"><br></form>');
+
         }
     ?>
 
-     <a href="admin.php"><button > Back to Home </button></a>
+    <h3>Add a new wine</h3>
+    <form action="addToCollection.php" method="POST">
+        Select a wine:
+        <select name="wine">
+        <?php
+            $stmt1=$conn->prepare("SELECT wineName")
+        ?>
+        </select>
+
+    <a href="admin.php"><button > Back to Home </button></a>
 
 </body>
